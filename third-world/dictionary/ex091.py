@@ -10,6 +10,7 @@ player_list = list()
 for x in range(0,4):
     numb_dice = randint(1,6)
     temp_dictionary[f'player {x + 1}'] = numb_dice
+    print(f'The player {x + 1}, got:', numb_dice)
 
 player_list = sorted(temp_dictionary.items(), key=itemgetter(1), reverse=True)
 
