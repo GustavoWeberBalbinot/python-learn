@@ -17,13 +17,12 @@ for x in range(0,amount_games):
             while random_numb in temp_list:
                 random_numb = randint(1, 60)
             temp_list.append(random_numb)
+    temp_list = sorted(temp_list)
     games_list.append(temp_list[:])
     temp_list.clear()
-
-games_list_ordened = sorted(games_list)
 
 for x in range(0, amount_games):
     print(f'The game {x + 1}ª is: [ ', end='')
     for y in range(0,6):
-        print(f'{games_list_ordened[x][y]} ', end= '')
+        print(f'{games_list[x][y]} ', end= '')
     print(']')
