@@ -1,5 +1,3 @@
-#faça uma função que resuma todas as outras em uma só
-
 def increase(value, percentage, show=False):
     result = value + (value * (percentage / 100))
     if show:
