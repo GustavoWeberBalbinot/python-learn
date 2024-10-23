@@ -17,3 +17,7 @@ def half(value):
     result = value / 2
     return result
 
+
+def currency(text):
+    txt = f'R${text}'
+    return txt
