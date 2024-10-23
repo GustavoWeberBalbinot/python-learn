@@ -1,3 +1,5 @@
+#Melhore o ex107 e adicione um "texto de cifra" para os valores
+
 def increase(value, percentage):
     result = value + (value * (percentage / 100))
     return result

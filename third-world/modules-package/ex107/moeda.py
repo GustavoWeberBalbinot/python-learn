@@ -1,3 +1,5 @@
+#Faça funções que recebam valor e porcentagem, e que faça, um aumento, um decremento, dobro, e metade
+
 def increase(value, percentage):
     result = value + (value * (percentage / 100))
     return result
