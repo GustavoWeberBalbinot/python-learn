@@ -29,28 +29,49 @@ def rown():
 
 
 def column():
-    print('|', ' '*9, end='')
+    print( '  '*4, '| ', end='')
 
 
-def do_two(function):
+def do_draw(function, value_init):
+    print(value_init, end='')
     function()
     function()
     print()
 
 
-def do_three(function):
-    function()
-    do_two(function)
-    print()    
+def do_three(function, value_init):
+    do_draw(function, value_init)
+    do_draw(function, value_init)
+    do_draw(function, value_init)
+    do_draw(function, value_init)
 
-def do_four2(function):
-    do_three(function)
-    do_three(function)
 
 def table(rown, column):
-    print('+ ', end= '')
-    do_two(rown)
-    do_three(column)
+    do_draw(rown,'+ ')
+    do_three(column, '| ')
+    do_draw(rown,'+ ')
+    do_three(column,'| ')
+    do_draw(rown,'+ ')
 
 table(rown, column)
 
+""""
+CHATGPT Resolution:
+def desenhar_grade(linhas, colunas):
+    # Parte superior da grade
+    parte_superior = "+ " + " - " * 4
+    linha_superior = parte_superior * colunas + "+"
+    
+    # Paredes laterais
+    paredes = "| " + "   " * 4
+    linha_paredes = paredes * colunas + "|"
+    
+    # Monta a grade completa
+    grade = (linha_superior + "\n" + linha_paredes + "\n") * linhas
+    grade += linha_superior  # Adiciona a última linha inferior
+
+    print(grade)
+
+# Chame a função com o número desejado de linhas e colunas
+desenhar_grade(2, 2)
+"""
