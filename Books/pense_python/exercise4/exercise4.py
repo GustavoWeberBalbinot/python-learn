@@ -64,5 +64,3 @@ def arc(bob, r,  angle):
 #arc(bob, 15, 180)
 
 
-#1 (Desenhos):
-#Flores:
