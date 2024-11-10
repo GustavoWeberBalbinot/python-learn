@@ -49,22 +49,24 @@ def polygon3(bob, lenght, n):
 
 #Flowers
 
-def flower1(bob, r, angle):
-    bob.speed(200)
+def flower1(bob, r, angle, n):
+    angle = 360/n
     circumference = 2 * math.pi * r
-    arc_segments = circumference * (angle / 360)
-    segments = 100
-    segment_length = arc_segments / segments
-    turn_angle = (angle / segments) - 1
-    for x in range(0,7):
+    arc_length = circumference * (angle / 360)
+    segments = 100 
+    segment_length = arc_length / segments + 1
+    turn_angle = angle / segments - 1
+    for x in range(n):
         for x in range(segments):
-            bob.fd(segment_length + 1)
-            bob.lt(turn_angle)
+            bob.fd(segment_length)
+            bob.rt(turn_angle)
         bob.lt(90)
         for x in range(segments):
-            bob.fd(segment_length + 1)
-            bob.lt(turn_angle)
-        bob.rt(180)
+            bob.fd(segment_length)
+            bob.rt(turn_angle)
+        bob.rt(angle)
     turtle.mainloop()
 
-flower1(bob, 15, 180)
+
+
+flower1(bob, 10, 180, 7)
