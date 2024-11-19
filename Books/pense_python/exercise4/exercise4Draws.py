@@ -56,8 +56,8 @@ def flower1(bob, r, n):
     turn_angle = float(60) / y
     
     for i in range(n):
-        for _ in range(2):
-            for _ in range(y):
+        for x in range(2):
+            for b in range(y):
                 bob.fd(segment_length)
                 bob.lt(turn_angle)
             bob.lt(120)
@@ -98,8 +98,8 @@ def flower3(bob, r, n):
     turn_angle = float(15) / y
     
     for i in range(n):
-        for _ in range(2):
-            for _ in range(y):
+        for x in range(2):
+            for b in range(y):
                 bob.fd(segment_length)
                 bob.lt(turn_angle)
             bob.lt(164)
