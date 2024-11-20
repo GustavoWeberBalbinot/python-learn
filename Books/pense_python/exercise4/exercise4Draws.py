@@ -1,6 +1,7 @@
 #polygons (tortas de tartaruga)
 import turtle
 import math
+bob = turtle.Turtle()
 
 #polygon 1:
 def polygon1(bob,lenght):
@@ -28,7 +29,6 @@ def polygon2(bob,lenght):
         bob.lt(180)
     turtle.mainloop()
 
-bob = turtle.Turtle()
 
 
 #polygon 3:
