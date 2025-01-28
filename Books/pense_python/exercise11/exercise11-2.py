@@ -9,9 +9,8 @@ def invert_dict(dict_to_invert = dict):
     for x in dict_to_invert.keys():
         value = dict_to_invert.setdefault(x)
         if  value not in inverted:
-            inverted[value] = [x]
-        else:
-            inverted[value].append(x)
+            inverted[value] = []
+        inverted[value].append(x)
     return inverted
 
 
