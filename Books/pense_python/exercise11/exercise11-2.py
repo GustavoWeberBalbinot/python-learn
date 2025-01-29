@@ -15,3 +15,14 @@ def invert_dict(dict_to_invert = dict):
 
 
 print(invert_dict(dict_teste))
+
+
+'''
+CHAT GPT:
+def invert_dict(d):
+    inverted = {}
+    for k, v in d.items():
+        inverted.setdefault(v, []).append(k) ##############This [], create the list in dict, enabling the use of APPEND
+    return inverted
+
+'''
