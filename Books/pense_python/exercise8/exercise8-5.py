@@ -5,7 +5,7 @@ def rotate_word(word='', numb=0):
     new_word = ''
     for letter in word:
         base = ord('A') if letter.isupper() else ord('a')   ##Tive que pegar do chat, para arrumar o alfabeto para aceitar A e a
-        numb_actual = (ord(letter) - base) + numb % 26
+        numb_actual = ((ord(letter) - base) + numb) % 26
         new_word += chr(base + numb_actual)
     return new_word
 
