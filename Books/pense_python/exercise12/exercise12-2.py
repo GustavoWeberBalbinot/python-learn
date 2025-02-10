@@ -25,11 +25,7 @@ with open('Books/pense_python/exercise12/file.txt', 'r') as file:
 def detect_anagram_words(list_words = list()):
     awords = dict()
     for item in list_words:
-        new_list = sorted(item) #This part organize the word in aphabetical sequence in list, the same sequence = anagram
-        word = ''
-        for x in range(len(item)):
-                word = word + new_list[x] #This part get the list items and join in a unique word
-        new_list.append(word) #This part join the word in the list.
+        word = str(sorted(item)) #This part organize the word in aphabetical sequence in list, the same sequence = anagram
         if word not in awords:
                 awords[word] = [item] #if the word not in dict, add this sequence word and your item
         else:
