@@ -6,15 +6,17 @@ Dica: O módulo string oferece uma string chamada whitespace, que contém espaç
 
 import string
 
-with open('Books/pense_python/exercise13/file13-1.txt', 'r') as file:
+with open('Books/pense_python/exercise13/file13-1.txt', 'r', encoding='utf-8') as file:
     txt = file.read()
 
 def format_txt(t = str()):
-    all_punctuation = list(string.punctuation)
+    d = dict()
+    for itens in string.punctuation:
+        itens = ord(itens) #Use Unicode to TRANSLATE
+        d[itens] = None
+    t = t.translate(d)
     t = t.replace(' ', string.whitespace)
     t = t.replace('\x0b\x0c', '') #\x0b\x0c === ♂♀
-    for iten in all_punctuation:
-        t = t.replace(iten, '')
     t = t.lower()
     return t
 
