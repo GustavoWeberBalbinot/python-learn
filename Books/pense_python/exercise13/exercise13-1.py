@@ -15,10 +15,10 @@ def format_txt(t = str()):
         itens = ord(itens) #Use Unicode to TRANSLATE
         d[itens] = None
     t = t.translate(d)
-    t = t.replace(' ', string.whitespace)
+    t = t.replace(' ', string.whitespace).replace(' \t', '')
     t = t.replace('\x0b\x0c', '') #\x0b\x0c === ♂♀
     t = t.lower()
     return t
-
+        
 
 format_txt(txt)
