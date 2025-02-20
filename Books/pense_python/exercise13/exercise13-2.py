@@ -7,11 +7,17 @@ Exiba o número de palavras diferentes usadas no livro. Compare livros diferente
 import string
 
 with open('Books/pense_python/exercise13/file13-2.txt', 'r', encoding='utf-8') as file:
+    key = 0
+    txt = ''
     for line in file:
-        if '*** START OF THE PROJECT GUTENBERG EBOOK' in line:
+        if '*** END OF THE PROJECT GUTENBERG EBOOK' in line: #Skip the end "Header"
             break
-    txt = file.read()
-
+        if key == 1:
+            txt = txt + line
+            continue
+        if '*** START OF THE PROJECT GUTENBERG EBOOK' in line: #Skip the earlu "Header"
+            key = 1
+    
 
 def format_txt(t = str()):
     d = dict()
@@ -19,6 +25,8 @@ def format_txt(t = str()):
     for itens in string.punctuation:
         itens = ord(itens) #Use Unicode to TRANSLATE
         d[itens] = None
+    d[8220] = None #Unicode to “
+    d[8221] = None #Unicode to ”
     t = t.translate(d)
     t = t.replace(' ', string.whitespace).replace(' \t', '')
     t = t.replace('\x0b\x0c', '') #\x0b\x0c === ♂♀
@@ -30,4 +38,4 @@ def format_txt(t = str()):
     return d_words
 
 
-print(format_txt(txt))
+format_txt(txt)
