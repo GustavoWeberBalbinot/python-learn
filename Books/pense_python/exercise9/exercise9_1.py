@@ -1,3 +1,7 @@
+'''
+Escreva um programa que leia words.txt e imprima apenas as palavras com mais de 20 caracteres (sem contar whitespace).
+'''
+
 with open('Books/pense_python/exercise9/moby_words.txt', 'r', encoding='utf-8') as file:
     txt = file.read()
 
