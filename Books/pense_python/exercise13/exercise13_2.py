@@ -41,5 +41,5 @@ def format_txt(t = str()):
     print(f'The amount of diferrent words is:{len(d_words)}')
     return d_words
 
-txt = read_archive('Books/pense_python/exercise13/file13-2.txt')
-format_txt(txt)
+#txt = read_archive('Books/pense_python/exercise13/file13-2.txt')
+#format_txt(txt)
