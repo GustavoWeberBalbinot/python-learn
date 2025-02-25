@@ -23,3 +23,70 @@ def avoids(word = str(), letters_banned = str()):
     return count_words
 
 print(avoids(txt, letters_banned))
+
+#CHAT GPT TIP
+
+'''
+def avoids(word: str, letters_banned: str) -> int:
+    words = word.split()
+    count_words = 0
+
+    for actual_word in words:
+        if not any(letter in actual_word for letter in letters_banned):
+            count_words += 1
+            print(actual_word)
+
+    return count_words
+
+txt = "hello world python code example"
+letters_banned = "xw"
+
+print(avoids(txt, letters_banned))
+'''
+#How to use ANY and ALL
+ 
+# #Difference
+'''
+any()  |    Pelo menos um elemento for True |   Verificar se uma string contém alguma letra proibida
+all()  |	Todos os elementos forem True	|   Verificar se uma string contém todas as letras de uma palavra
+'''
+#ANY
+'''
+Retorna True se pelo menos um elemento do iterável for verdadeiro. Caso contrário, retorna False.
+Funciona como um "OU lógico" sobre os elementos.
+
+Exemplo:
+
+valores = [False, False, True, False]
+print(any(valores))  # True, porque há pelo menos um True
+
+Outro exemplo com strings:
+
+palavra = "hello"
+letras_banidas = "xyz"
+print(any(letra in palavra for letra in letras_banidas))  # False
+
+Aqui, any() verifica se alguma letra de "xyz" está em "hello".
+'''
+#ALL
+'''
+all(iterável)
+Retorna True se todos os elementos do iterável forem verdadeiros. Caso contrário, retorna False.
+Funciona como um "E lógico" sobre os elementos.
+
+Exemplo:
+
+valores = [True, True, True]
+print(all(valores))  # True, pois todos são True
+
+valores = [True, False, True]
+print(all(valores))  # False, pois há pelo menos um False
+
+Outro exemplo com strings:
+
+palavra = "hello"
+letras_presentes = "helo"
+print(all(letra in palavra for letra in letras_presentes))  # True
+Aqui, all() verifica se todas as letras de "helo" estão em "hello".
+'''
+
