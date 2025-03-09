@@ -27,7 +27,6 @@ def three_consecutive_double_letters(word = str()):
             i += 1
         
 
-
 for words in txt:
     txt = txt.split()
     three_consecutive_double_letters(words)
