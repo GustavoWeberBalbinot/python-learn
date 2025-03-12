@@ -7,10 +7,13 @@ Escreva um programa que use a subtração de conjuntos para encontrar palavras n
 import string
 
 
-
-def read_archive(file_name):
+def read_archive(file_name, book_gunterberg = False):
     hist = dict()
     file = open(file_name, 'r', encoding='utf-8')
+    if book_gunterberg:
+        for line in file:
+            if '*** START OF THE PROJECT GUTENBERG EBOOK' in line:
+                break
     for line in file:
         analitic_line(line, hist)
     file.close()
@@ -19,7 +22,7 @@ def read_archive(file_name):
 def analitic_line(line,hist):
     line = line.replace('-', '')
     for word in line.split():
-         word = word.strip(string.whitespace + string.punctuation)
+         word = word.strip(string.punctuation + string.whitespace )
          word = word.lower()
          hist[word] = hist.get(word,0) + 1
 
@@ -31,7 +34,6 @@ def compare_archives(file1,file2):
               hist[key] = None
     return hist.keys()
 
-
-file1 = read_archive('Books/pense_python/exercise13/file13-2.txt')
+file1 = read_archive('Books/pense_python/exercise13/file13-2.txt', book_gunterberg=True)
 file2 = read_archive('Books/pense_python/exercise13/moby_words.txt')
 print(compare_archives(file1,file2))
