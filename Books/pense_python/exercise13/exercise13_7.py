@@ -23,26 +23,24 @@ def random_word(txt):
     for value in t_frequence:
         t_acumulate_frequence.append(n + value)
         n += value
-    random_numb = randint(1,t_acumulate_frequence[-1])
-    value_random = binary_search(t_acumulate_frequence, random_numb)
+    random_numb = randint(1,len(t_frequence))
+    value_random = binary_search(t_acumulate_frequence, t_acumulate_frequence[random_numb])
     print(value_random)
-    teste = t_words[value_random]
-    return teste
+    word = t_words[value_random]
+    return word
 
 
 def binary_search(list_numbs, value_to_search = 0):
-    high_position = len(list_numbs)
-    actual_position = high_position // 2
-    lower_position = 0
-    while lower_position <= high_position:
-        actual_position = (lower_position + high_position) // 2
-        if list_numbs[actual_position] == value_to_search:
-            return actual_position
-        elif value_to_search > list_numbs[actual_position]:
-            lower_position = actual_position + 1
+    high_value= len(list_numbs) - 1
+    lower_value = 0
+    while lower_value <= high_value:
+        middle_value = (lower_value + high_value)
+        if value_to_search == list_numbs[middle_value]:
+            return middle_value
+        if value_to_search > list_numbs[middle_value]:
+            lower_value = middle_value + 1
         else:
-            high_position = actual_position - 1
-
+            high_value = middle_value - 1
 
 
 print(random_word(all_values_dict))
