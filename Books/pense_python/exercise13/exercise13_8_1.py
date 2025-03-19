@@ -20,4 +20,4 @@ def get_pre_su(list_words, lenght = 2):
     return d
 
 
-print(get_pre_su(words))
+get_pre_su(words)
