@@ -6,7 +6,7 @@ O que acontece se você aumentar o comprimento dos prefixos? O texto aleatório 
 '''
 
 from exercise13_8_1 import get_pre_su
-from random import choice
+from random import choice, randint
 
 words = list()
 
@@ -18,15 +18,15 @@ with open('Books/pense_python/exercise13/file13-7.txt', 'r', encoding='utf-8') a
 
 dict_words = get_pre_su(words)
 
-def random_txt(words_dict, lenght = 2):
-    count = lenght - lenght
-    for key, value in words_dict.items():
-        if count % (lenght+1) == 0:
-            for x in range(len(key)):
-                print(f'{key[x]} ', end='')
-            print(f'{choice(value)} ', end='')
-        count += 1
-        
+def random_txt(words_dict, lenght = 2, max_words = 50):
+    pref = choice(list(words_dict.keys()))
+    print(' '.join(pref), end=' ')
+    for x in range(max_words - lenght):
+        if pref not in words_dict:
+            break
+        next_word = choice(words_dict[pref])
+        print(next_word, end=' ')
+        pref = (*pref[1:], next_word)
 
 
 
