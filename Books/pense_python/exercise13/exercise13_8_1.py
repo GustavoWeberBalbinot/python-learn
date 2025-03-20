@@ -19,5 +19,5 @@ def get_pre_su(list_words, lenght = 2):
         d[prefx].append(list_words[x+lenght])
     return d
 
-
-get_pre_su(words)
+if __name__ == "__main__":
+    get_pre_su(words)

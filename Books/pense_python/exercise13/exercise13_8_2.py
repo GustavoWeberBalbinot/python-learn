@@ -29,5 +29,5 @@ def random_txt(words_dict, lenght = 2, max_words = 50):
         pref = (*pref[1:], next_word)
 
 
-
-random_txt(dict_words)
+if __name__ == "__main__":
+    random_txt(dict_words)
