@@ -32,14 +32,19 @@ for key, value in words.items():
 teste = sorted(teste, reverse=True)
 
 frequence = list()
-words_list = list()
+words_posi = list()
 
-for x in range(len(teste)):
+for x in range(0, len(teste)):
     frequence.append(teste[x][0])
-    words_list.append(x)
+    words_posi.append(x + 1)
+
+log_f = np.log(frequence) #np -- numpy -- get log of n items in the list
+log_r = np.log(words_posi)
 
 
-
-log_f = np.log(frequence)
-log_r = np.log(words_list)
-
+plt.figure(figsize=(8, 5))
+plt.plot(log_r, log_f, 'bo-')
+plt.xlabel("log(r)")
+plt.ylabel("log(f)")
+plt.title("Lei de Zipf")
+plt.show()
