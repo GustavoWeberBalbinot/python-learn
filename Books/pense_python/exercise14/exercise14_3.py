@@ -46,6 +46,7 @@ def check_same_file(my_root,my_file):
             d_hashs[md5_hash_hex].append(v)
     return d_hashs
 
-my_root, my_dirs, my_file = search_archives(my_dir)
-hash_values = check_same_file(my_root,my_file)
-print(hash_values)
+if __name__ == "__main__":
+    my_root, my_dirs, my_file = search_archives(my_dir)
+    hash_values = check_same_file(my_root,my_file)
+    print(hash_values)
