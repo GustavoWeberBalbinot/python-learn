@@ -11,10 +11,11 @@ Para um desafio um pouco maior, escreva a versão mais geral que calcule o dia e
 '''
 
 import datetime
+import copy
 from zoneinfo import ZoneInfo
 
 tz = ZoneInfo("America/Sao_Paulo")
-actual_day = datetime.date.today()
+actual_day = datetime.datetime.today()
 
 
 
@@ -35,24 +36,23 @@ def actual_week_day(day):
 }'''
 
 birthday = {
-    'month': 5,
-    'day': 16,
+    'month': 10,
+    'day': 6,
     'year': 2004
 }
 
-people_day = datetime.date(birthday['year'], birthday['month'], birthday['day'])
+people_day = datetime.datetime(birthday['year'], birthday['month'], birthday['day'])
 
 def your_age(time):
-    total_days = actual_day - time
-    age = datetime.timedelta(days=total_days.days).days // 365
-    if time.month >= actual_day.month and time.day  >= actual_day.day:
-        next_age = datetime.timedelta(days=time.day + 365) ###Problem its here
-    else:
-        next_age = datetime.timedelta(days=time.day)
-    teste = next_age.days
-    print(f'Your live for: {age} years. Your next birth days is in: {next_age.days - age.days} days, {next_age.seconds * 3600} hours, {next_age.seconds * 60} minutes, {next_age.seconds}')
+    days_alive = actual_day - time
+    next_birthday = datetime.datetime((actual_day.year),time.month, time.day)
+    if actual_day.month - time.month >= 0 and actual_day.day >= time.day:
+        next_birthday = datetime.datetime((actual_day.year+1),time.month, time.day)
+    next_birthday = next_birthday - actual_day
+    print(f'Your live for: {days_alive.days // 365} years. Your next birth days is in: {next_birthday.days} days, {next_birthday.seconds // 3600} hours, {next_birthday.seconds // 60} minutes, {next_birthday.seconds} seconds')
     return 
 
 
 your_age(people_day)
 
+#Double day to two people
