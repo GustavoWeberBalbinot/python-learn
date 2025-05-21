@@ -53,6 +53,25 @@ def your_age(time):
     return 
 
 
-your_age(people_day)
+#your_age(people_day)
 
 #Double day to two people
+
+p1_birthday = datetime.date(2003, 11, 30) #YYYY:MM:DD
+p2_birthday = datetime.date(2004, 12, 5) #YYYY:MM:DD
+
+
+def double_day(p1, p2):
+    old = p2 #P2 is expeted to be older
+    diff_days = (p1 - p2)
+    if diff_days.days == 0:
+        print("They do not have a Double Day — they are the same age.")
+        return
+    if diff_days.days < 0:
+        diff_days = abs(diff_days)
+        old = p1 #If diff days its negative, p1 to be older
+    day = old + diff_days * 2 #Multiplcate to 2 because, to "double day", the Young is X and the Older is 2X
+    print(f'The double day is: {day}')
+
+
+double_day(p1_birthday, p2_birthday)
