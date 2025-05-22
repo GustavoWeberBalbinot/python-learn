@@ -57,8 +57,8 @@ def your_age(time):
 
 #Double day to two people
 
-p1_birthday = datetime.date(2003, 11, 30) #YYYY:MM:DD
-p2_birthday = datetime.date(2004, 12, 5) #YYYY:MM:DD
+p1_birthday = datetime.date(2004, 10, 6) #YYYY:MM:DD
+p2_birthday = datetime.date(2004, 10, 2) #YYYY:MM:DD
 
 
 def double_day(p1, p2):
@@ -75,3 +75,20 @@ def double_day(p1, p2):
 
 
 double_day(p1_birthday, p2_birthday)
+
+#N times to old
+
+def n_old_day(p1,p2,n=2):
+    if p1 == p2:
+        print("They do not have a Double Day — they are the same age.")
+        return
+    old, young = (p1,p2) if p1>p2 else (p2,p1)
+    diff_days = abs(p1 - p2)
+    day = old + ((diff_days * n)/(n-1)) - diff_days #I needed the chatpgt to equation
+    age_old = (day - old).days
+    age_young = (day - young).days
+    print(f'The {n} times day is: {day}')
+    print(f'The {old} people have: {age_old}')
+    print(f'The {young} people have: {age_young}')
+
+n_old_day(p1_birthday, p2_birthday, 5)
