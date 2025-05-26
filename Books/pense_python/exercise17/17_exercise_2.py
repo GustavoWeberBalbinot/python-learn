@@ -17,14 +17,14 @@ class Kangaroo():
 
     def __init__(self, pouch_contents=None):
         if pouch_contents is None:
-            pouch_contents = []
+            pouch_contents = [] #It forces Python to create a new list, and create a new list every time, and not combine all lists.
         self.pouch_contents = pouch_contents
     
     def put_in_pouch(self,other):
         self.pouch_contents.append(other)
 
     def __str__(self):
-        values = [str(item) for item in self.pouch_contents]
+        values = [str(item) for item in self.pouch_contents] #Passes through every item and transforms it into a list, resolving the problem, where print runs N times for N values
         return f"The object Kangaroo with our pouch: {values}"
 
 kanga = Kangaroo()
