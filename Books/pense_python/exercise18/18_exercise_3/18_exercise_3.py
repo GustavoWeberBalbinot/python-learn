@@ -124,8 +124,68 @@ class PokerHand(Hand):
         Note that this work correctly if hand with more 5 cards. Ace count as 1 and 14
         """
         self.sort_rank()
-        for x in self.ordened:
-            print(x)
+        sequence = None
+        ace = 0
+        for x in self.ordened_rank:
+            x_rank = int(x.rank)
+            if x_rank == 1:
+                ace = x_rank #"Ignore" the ace card.
+                continue
+            if sequence is None:
+                sequence = [x_rank]
+                continue
+            if len(sequence) == 5:
+                return True
+            if len(sequence) == 4 and ace == 1 and (sequence[0] == 10 or sequence[0] == 2): #If ace is in the hand, the sequence is 4 and the lower number is 2 or 10 because the ACE is 1 or 14.
+                return True
+            if sequence[-1] == x_rank: #Skip the same ranks
+                continue
+            if sequence[-1] - x_rank == -1: #If the diff in the cards is -1, the actual card is 1 high the last card
+                sequence.append(x_rank)
+            else:
+                sequence = [x_rank] #If the diff is greater than -1, init new list with the actual card
+        return False
+
+    def has_full_house(self):
+        """Return True if 2 cards have the same rank and 3 other card with same rank in the same hand,
+        
+        Note that this work correctly if hand with more 5 cards.
+        """
+        self.rank_hist()
+        full_house_cards = []
+        for value in self.ranks.values():
+            if value == 2 and not 2 in full_house_cards:
+                full_house_cards.append(value)
+            if value >= 3 and not 3 in full_house_cards:
+                full_house_cards.append(value)
+            if len(full_house_cards) == 2:
+                return True
+        return False
+
+    def has_four_of_a_kind(self):
+        """Return True if 4 cards have the same rank, False otherwise
+        
+        Note, that this work correctly if hand with more 4 cards.
+        """
+        self.rank_hist()
+        for value in self.ranks.values():
+            if value >= 4:
+                return True
+        return False
+
+    def has_straight_flush(self):
+        """Return True if the 5 cards the same suit and has a sequence. False otherwise
+        
+        Note that this work correctly if hand with more 5 cards.
+        """
+        self.flush = {}
+        for card in self.cards:
+            if card.suit not in self.flush: #Divided the cards for the suit. The cards is sort for "power" then lowers cards rank always is the first
+                self.flush[card.suit] = []
+            self.flush[card.suit].append(card.rank)
+        
+        
+        
 
 if __name__ == '__main__':
     # make a deck
@@ -138,5 +198,5 @@ if __name__ == '__main__':
         deck.move_cards(hand, 7)
         hand.sort()
         print(hand)
-        print(hand.has_sequence())
+        print(hand.has_straight_flush())
         print('')
