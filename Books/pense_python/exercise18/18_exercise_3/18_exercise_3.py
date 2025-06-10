@@ -43,7 +43,7 @@ Você pode usar e modificar este código desde que mantenha esta nota de atribui
 """
 
 
-from Card import Hand, Deck
+from Card import Hand, Deck, Card
 
 
 class PokerHand(Hand):
@@ -66,10 +66,19 @@ class PokerHand(Hand):
         self.ranks = {}
         for card in self.cards:
             self.ranks[card.rank] = self.ranks.get(card.rank, 0) + 1
-        
+    
+    def suit_agroup(self):
+         self.flush = {}
+         for card in self.cards:
+            if card.suit not in self.flush: #Divided the cards for the suit. The cards is sort for "power" then lowers cards rank always is the first
+                self.flush[card.suit] = []
+            self.flush[card.suit].append(card.rank)
+
     def sort_rank(self):
-        self.ordened_rank = ()
-        self.ordened_rank = sorted(self.cards, key=lambda card: card.rank)
+        """Return the new ordened list of card for the rank.
+        
+        """
+        self.ordened_rank = sorted(self.cards, key=lambda r:r.rank)
 
     def has_flush(self):
         """Returns True if the hand has a flush, False otherwise.
@@ -178,11 +187,14 @@ class PokerHand(Hand):
         
         Note that this work correctly if hand with more 5 cards.
         """
-        self.flush = {}
-        for card in self.cards:
-            if card.suit not in self.flush: #Divided the cards for the suit. The cards is sort for "power" then lowers cards rank always is the first
-                self.flush[card.suit] = []
-            self.flush[card.suit].append(card.rank)
+        self.suit_agroup()
+        new_hand = PokerHand()
+        for suit, rank in self.flush.items():
+            if len(rank) >= 5:
+                for x in rank:
+                        new_hand.cards.append(Card(suit, x))
+                return new_hand.has_sequence()
+        return False
         
         
         
